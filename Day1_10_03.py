@@ -289,3 +289,14 @@ Problem 4: Write a python program to check the type of variables using input fun
 d = input("Type here: ")
 
 print(f"Type of default input function is: {type(d)}")
+
+arr = [12,23,34,22,12]
+
+def avarage(nums):
+    a = 0
+    for i in nums:
+        a += i
+    return a//len(nums)
+
+print(f"The avarage of the numbers {arr} is {avarage(arr)}")
+        
