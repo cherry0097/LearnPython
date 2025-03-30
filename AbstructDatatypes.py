@@ -31,3 +31,8 @@ print(e[5:])
 print(e[:5:1]) # will print from 0 to 5 - 1  th index following gap of 1
 print(e[5::]) # will print from 5 to len(e)-1 th index following gap of 1
 
+a = [2,3,4,5]
+b = [7,8,9,10]
+print(f"[2,3,4,5] + [7,8,9,10] = {a + b}",end=" and ")
+a.extend(b)
+print(f"[2,3,4,5].extend([7,8,9,10]) = {a} both same.")
