@@ -70,6 +70,8 @@ print(a)
 decmialtobinary(b)
 print(b)
 
+print(f"You know even number & 1 = 0: 4 & 1 = {4 & 1}")
+
 c = a | b
 
 print("OR----------------------------")
