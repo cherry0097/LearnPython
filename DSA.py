@@ -69,5 +69,61 @@ head, tail = insert_at_beginning(head, tail, 13)
 
 display(head)
 
-'''Hash Table'''
+'''Dequeue --> FIFO (First in first out)'''
 
+from collections import deque
+
+q = deque()
+
+print(q)
+
+# Enqueue - Add element to the right - O(1)
+
+q.append(4)
+q.append(5)
+q.append(7)
+q.append(10)
+
+print(q)
+
+# Dequeue - Remove element from left to the right - o(1)
+
+p1 = q.popleft()
+p2 = q.popleft()
+print(f"We removed {p1} and {p2} from q and now q = {q}")
+
+'''Recursion:'''
+
+def fibo(n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: return fibo(n - 1) + fibo(n - 2)
+
+print(fibo(34))
+
+'''Bonus memoization:'''
+def fiboMemo(n, memo = {}):
+    if n in memo: return memo[n]
+    if n == 0: return 0
+    elif n == 1: return 1
+    else: 
+        memo[n] = fibo(n - 1) + fibo(n - 2)
+        return memo[n]
+
+print(fibo(34))
+
+'''Lets fun with it.'''
+
+async def fibo_thead_fun(p):
+    result = await asyncio.to_thread(fibo, p)
+    print(f"fibo(p) = {result}")
+async def fibo_thead_memo_fun(p):
+    result = await asyncio.to_thread(fiboMemo, p)
+    print(f"fiboMemo(p) = {result}")
+
+import asyncio
+
+async def myMain(callval):
+    await asyncio.gather(fibo_thead_fun(callval),fibo_thead_memo_fun(callval))
+
+asyncio.run(myMain(37))
