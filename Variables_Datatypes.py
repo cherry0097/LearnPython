@@ -116,7 +116,47 @@ print(("j","c",3,4) + ("r","t")) # set + set = new set with all the valuse added
 
 # I am not typing all the other type errors as unlike JavaScript it's easy to rember the data types which can't be added togather rather then which can be added togather.
 
+print(f"bool() : -->")
+print()
+# bool() function only returns a value true or false.
+print(f"bool(\"Ratul Pal\") = {bool("Ratul Pal")}")
+print(f"bool(False) = {bool(False)}")
+print(f"bool(1) = {bool(1)}")
+print(f"bool(0) = {bool(0)}")
+print(f"bool(2 + 3j) = {bool(2 + 3j)}")
+print()
 
+print()
+print(f"int() : -->")
+print()
+# int() function converts any value to int
+print(f"int(3.14) = {int(3.14)}")
+print(f"int(9.99) = {int(9.99)}")
+print(f"int(True) = {int(True)}")
+print(f"int(False) = {int(False)}")
+# print(f"int(2 + 3j) = {int(2 + 3j)}") --> Not possible
+# print(f"int(\"Ratul\") = {int("Ratul")}") --> This not possible
+print()
+
+print()
+print(f"float() : -->")
+print()
+print(f"float(6) = {float(6)}")
+print(f"float(True) = {float(True)}")
+print(f"float(False) = {float(False)}")
+print(f"float(3.14) = {float(3.14)}")
+# print(f"float(2 + 3j) = {float(2 + 3j)}") --> Not possible
+# print(f"float(\"Ratul\") = {float("Ratul")}") --> This is not possible.
+print()
+
+print()
+print(f"complex() : -->")
+print()
+print(f"complex(3) = {complex(3)}")
+print(f"complex(2 + 3j) = {complex(2 + 3j)}")
+print(f"complex(True) = {complex(True)}")
+print(f"complex(False) = {complex(False)}")
+print(f"complex(3.14) = {complex(3.14)}")
 
 
 
