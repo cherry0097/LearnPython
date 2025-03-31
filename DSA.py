@@ -68,3 +68,6 @@ head, tail = insert_at_beginning(head, tail, 6)
 head, tail = insert_at_beginning(head, tail, 13)
 
 display(head)
+
+'''Hash Table'''
+
