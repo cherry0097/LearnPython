@@ -160,14 +160,15 @@ from concurrent.futures import ThreadPoolExecutor
 
 class PoolExecutor:
     def fun(self,seconds):
-        print(f"I will stop the code for {self.seconds} seconds.")
-        time.sleep(self.seconds)
+        print(f"I will stop the code for {seconds} seconds.")
+        time.sleep(seconds)
         return seconds
 
     def poolingDemo():
         with ThreadPoolExecutor() as executor:
+            obj = PoolExecutor()
             l = [10,15,2,1,11]
-            results = executor.map(fun,l)
+            results = executor.map(obj.fun,l)
             for result in results:
                 print(result)
 
