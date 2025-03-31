@@ -179,6 +179,10 @@ from concurrent.futures import ProcessPoolExecutor
 # Now all the other steps are exactly same.
 
 
+fib = lambda t, q : (q, t + q)
+print(fib(0, 1))
+
+
 
 
 
