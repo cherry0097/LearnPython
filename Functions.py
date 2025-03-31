@@ -99,6 +99,83 @@ print(squred_numbers)
 even_squred_numbers = [y**2 for y in [x for x in numbers if x % 2 == 0] if y > 20]
 print(even_squred_numbers)
 
+import asyncio
+import requests
+def main1():
+    async def function1():
+        # with open("image1.png","wb") as f:
+        #     f.write(requests.get("https://images-assets.nasa.gov/image/iss065e000024/iss065e000024~orig.jpg").content) 
+        print("Starting download Image 1")   
+        await asyncio.sleep(10)
+        print("Image 1 downloaded successfully.")
+    async def function2():
+        # with open("image2.png","wb") as f:
+        #     f.write(requests.get("https://photojournal.jpl.nasa.gov/jpeg/PIA24432.jpg").content)
+        print("Starting download Image 2")
+        await asyncio.sleep(5)
+        print("Image 2 downloaded successfully.")
+    async def function3():
+        # with open("image3.png","wb") as f:
+        #     f.write(requests.get("https://images-assets.nasa.gov/image/iss065e000024/iss065e000024~orig.jpg").content)
+        print("Starting download Image 3")
+        await asyncio.sleep(1)
+        print("Image 3 downloaded successfully.")
+
+    async def main():
+        await asyncio.gather(function1(), function2(), function3())
+
+    asyncio.run(main())
+
+import threading
+import time
+def main2():
+    def func(seconds):
+        print(f"I am sleeping for {seconds}.")
+        time.sleep(seconds)
+
+    t1 = time.perf_counter()
+    func(10)
+    func(5)
+    func(1)
+    t2 = time.perf_counter()
+    print(f"Total time taken: {t2 - t1}")
+
+    thread1 = threading.Thread(target=func,args=[10])
+    thread2 = threading.Thread(target=func,args=[5])
+    thread3 = threading.Thread(target=func,args=[1])
+
+    t1_new = time.perf_counter()
+    thread1.start()
+    thread2.start()
+    thread3.start()
+
+    thread1.join()
+    thread2.join()
+    thread3.join()
+    t2_new = time.perf_counter()
+
+    print(f"Total time taken after threading: {t2_new - t1_new}")
+
+from concurrent.futures import ThreadPoolExecutor
+
+class PoolExecutor:
+    def fun(self,seconds):
+        print(f"I will stop the code for {self.seconds} seconds.")
+        time.sleep(self.seconds)
+        return seconds
+
+    def poolingDemo():
+        with ThreadPoolExecutor() as executor:
+            l = [10,15,2,1,11]
+            results = executor.map(fun,l)
+            for result in results:
+                print(result)
+
+# PoolExecutor.poolingDemo()
+
+from concurrent.futures import ProcessPoolExecutor
+
+# Now all the other steps are exactly same.
 
 
 
