@@ -172,7 +172,7 @@ class PoolExecutor:
             for result in results:
                 print(result)
 
-# PoolExecutor.poolingDemo()
+PoolExecutor.poolingDemo()
 
 from concurrent.futures import ProcessPoolExecutor
 

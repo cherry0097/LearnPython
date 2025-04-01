@@ -114,16 +114,33 @@ print(fibo(34))
 
 '''Lets fun with it.'''
 
-async def fibo_thead_fun(p):
-    result = await asyncio.to_thread(fibo, p)
+def fibo_thead_fun(p):
+    result = fibo(p)
     print(f"fibo(p) = {result}")
-async def fibo_thead_memo_fun(p):
-    result = await asyncio.to_thread(fiboMemo, p)
+def fibo_thead_memo_fun(p):
+    result = fiboMemo(p)
     print(f"fiboMemo(p) = {result}")
 
-import asyncio
+import threading
 
-async def myMain(callval):
-    await asyncio.gather(fibo_thead_fun(callval),fibo_thead_memo_fun(callval))
+fibo_thread = threading.Thread(target=fibo_thead_fun,args=[50])
+fiboMemo_thread = threading.Thread(target=fibo_thead_memo_fun,args=[50])
 
-asyncio.run(myMain(37))
+fibo_thread.start()
+fiboMemo_thread.start()
+
+fibo_thread.join()
+fiboMemo_thread.join()
+
+# import asyncio
+
+# async def myMain(callval):
+#     await asyncio.gather(fibo_thead_fun(callval),fibo_thead_memo_fun(callval))
+
+# asyncio.run(myMain(37))
+
+# I tried multi threading here.
+
+'''Binary Search'''
+
+
