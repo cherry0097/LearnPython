@@ -12,21 +12,29 @@ class Employee:
     def yearlyIncrease(self):
         self.salary = int(self.salary * self.increment)
         # self.salary = int(self.salary * Employee.increment)
+    @classmethod
+    def setIncrement(cls,amount):
+        cls.increment = amount
+    @staticmethod
+    def sum(a,b):
+        return a+b
+    def __str__(self):
+        return f"The Name of the employee is: {self.fname} {self.lname}"
 
 
 Ratul = Employee('Ratul','Pal',29990,2.3)
 Nicolas = Employee('Nicolas','Tesla',30000,3.4)
 
-print(f"Created and employee {Ratul.fname} {Ratul.lname} with salary: {Ratul.salary}")
-print(f"Created and employee {Nicolas.fname} {Nicolas.lname} with salary: {Nicolas.salary}")
+# print(f"Created and employee {Ratul.fname} {Ratul.lname} with salary: {Ratul.salary}")
+# print(f"Created and employee {Nicolas.fname} {Nicolas.lname} with salary: {Nicolas.salary}")
 
-Ratul.yearlyIncrease()
+# Ratul.yearlyIncrease()
 
-print(f"Ratul Pal: {Ratul.salary}\nNicolas Tesla: {Nicolas.salary}")
+# print(f"Ratul Pal: {Ratul.salary}\nNicolas Tesla: {Nicolas.salary}")
 
-Nicolas.yearlyIncrease()
+# Nicolas.yearlyIncrease()
 
-print(f"Ratul Pal: {Ratul.salary}\nNicolas Tesla: {Nicolas.salary}")
+# print(f"Ratul Pal: {Ratul.salary}\nNicolas Tesla: {Nicolas.salary}")
 
 '''
 Now here you need to know the concept of self.
@@ -34,6 +42,8 @@ Here when we are running self.increment it's trying to search the increment vari
 But if it would able to find the increment on the init function then it would took the value from there.
 
 So, to get rid of it and so that it only takes the value under class we can do this: We can replace self.increment to Employee.increment.
+
+self is an instance argument.
 
 So, long story short:
 
@@ -44,13 +54,34 @@ Employee.increment --> Class variable
 
 # How to check the variables of instances:
 
-print(Ratul.__dict__)
-Ratul.increment = 15
-print(Ratul.__dict__)
-print(Nicolas.__dict__)
+# print(Ratul.__dict__)
+# # Ratul.increment = 15
+# print(Ratul.__dict__)
+# print(Nicolas.__dict__)
 
 # To check the variables of class:
 
-print(Employee.__dict__)
+# print(Employee.__dict__)
+
+# print(Ratul.salary)
+
+# Employee.setIncrement(2)
+# Ratul.yearlyIncrease()
+# print(Ratul.salary)
+
+print(Employee.sum(3,4))
+
+class Programmer(Employee):
+    def __init__(self, fname, lname, salary, increase, programming_language):
+        super().__init__(fname, lname, salary, increase)
+        self.programming_language = programming_language
+
+Naruto = Programmer("Naruto","Uzumaki",4000,2,"Python")
+
+print(Naruto.__dict__)
+
+# help(Naruto)
+print(str(Naruto))
+
 
 

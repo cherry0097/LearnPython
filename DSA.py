@@ -123,8 +123,8 @@ def fibo_thead_memo_fun(p):
 
 import threading
 
-fibo_thread = threading.Thread(target=fibo_thead_fun,args=[50])
-fiboMemo_thread = threading.Thread(target=fibo_thead_memo_fun,args=[50])
+fibo_thread = threading.Thread(target=fibo_thead_fun,args=[5])
+fiboMemo_thread = threading.Thread(target=fibo_thead_memo_fun,args=[5])
 
 fibo_thread.start()
 fiboMemo_thread.start()
@@ -143,4 +143,36 @@ fiboMemo_thread.join()
 
 '''Binary Search'''
 
+Search_arr = [-10,-5,-3,0,2,5,7,9,11,13,43]
+target = 9
+
+def binarySearch(arr, tar, l, r):
+    if arr[l] == tar:
+        return l
+    else:
+        m = (l + r) // 2
+        if arr[m] > tar: r = m
+        else: l = m
+        return binarySearch(arr,tar,l,r)
+    
+
+print(binarySearch(Search_arr,target,0,len(Search_arr)))
+
+'''Shorting an array:'''
+
+nums = [-4,-1,0,3,10]
+squre_nums = [x**2 for x in nums]
+print(squre_nums)
+l = 0
+r = len(squre_nums) - 1
+shorted_squered_arr = []
+
+while l <= r:
+    if squre_nums[l] > squre_nums[r]: 
+        shorted_squered_arr.append(squre_nums[l])
+        l += 1
+    else: 
+        shorted_squered_arr.append(squre_nums[r])
+        r -= 1
+print(shorted_squered_arr)
 
