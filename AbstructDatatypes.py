@@ -94,6 +94,15 @@ Copying & Other Operations:
 +--------------------+------------------+-----------------+
 '''
 
+# You know you can do this as well:
+
+n = 10
+A = [0, 1]
+[A.append(A[-1] + A[-2]) for _ in range(n - 2)]
+print(A)
+
+'''LOL!!!!!!'''
+
 '''
 Lets start discussing about tuples:
 
