@@ -81,7 +81,8 @@ print("OPTIONS Response Headers:", response_options.headers)
 '''In this way you can observe multi threading:'''
 from concurrent.futures import ThreadPoolExecutor
 
-listOfURLs = ["https://download-cdn.jetbrains.com/python/pycharm-professional-2024.3.5.exe","https://vscode.download.prss.microsoft.com/dbazure/download/stable/ddc367ed5c8936efe395cffeec279b04ffd7db78/VSCodeUserSetup-x64-1.98.2.exe"]
+listOfURLs = ["https://download-cdn.jetbrains.com/python/pycharm-professional-2024.3.5.exe",
+              "https://vscode.download.prss.microsoft.com/dbazure/download/stable/ddc367ed5c8936efe395cffeec279b04ffd7db78/VSCodeUserSetup-x64-1.98.2.exe"]
 listOfFileName = ["Pycherm","VSCode"]
 
 with ThreadPoolExecutor() as T:
