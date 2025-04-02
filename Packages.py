@@ -22,17 +22,25 @@ get_response = requests.get("https://httpbin.org/get")
 
 '''To download a file and stream'''
 
-url = "https://download-cdn.jetbrains.com/python/pycharm-professional-2024.3.5.exe"
-download_file = requests.get(url, stream= True)
-totalExpectedBytes = int(download_file.headers["Content-Length"])
-bytesReceived = 0
-progressBar = tqdm(total=totalExpectedBytes,unit_scale=True)
-with open("Pycharm.exe", "wb") as f:
-    for chunk in download_file.iter_content(chunk_size=128):
-        progressBar.update(bytesReceived)
-        f.write(chunk)
-        bytesReceived += 128
-progressBar.close()
+
+def downloadFile(url,filename):
+    download_file = requests.get(url, stream= True)
+
+    # Get total file size
+    totalExpectedBytes = int(download_file.headers.get("Content-Length", 0))
+
+    # Initialize progress bar
+    progressBar = tqdm(total=totalExpectedBytes,unit_scale=True)
+
+    # Download and write the file
+    with open(f"{filename}.exe", "wb") as f:
+        for chunk in download_file.iter_content(chunk_size=128):
+            if chunk:
+                f.write(chunk)
+                progressBar.update(len(chunk))
+
+    # Close progress bar
+    progressBar.close()
 
 '''
 # Sample API URL (replace with your actual API)
@@ -70,5 +78,13 @@ response_options = requests.options(url)
 print("OPTIONS Response Headers:", response_options.headers)
 
 '''
+'''In this way you can observe multi threading:'''
+from concurrent.futures import ThreadPoolExecutor
+
+listOfURLs = ["https://download-cdn.jetbrains.com/python/pycharm-professional-2024.3.5.exe","https://vscode.download.prss.microsoft.com/dbazure/download/stable/ddc367ed5c8936efe395cffeec279b04ffd7db78/VSCodeUserSetup-x64-1.98.2.exe"]
+listOfFileName = ["Pycherm","VSCode"]
+
+with ThreadPoolExecutor() as T:
+    T.map(downloadFile,listOfURLs,listOfFileName)
 
 
