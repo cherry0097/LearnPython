@@ -6,8 +6,8 @@ class Employee:
     # 1st we will create a constructor function:
     def __init__(self, fname, lname, salary,increase): #
         self.fname = fname
-        self.lname = lname
-        self.salary = salary
+        self._lname = lname # Now it's protected.
+        self.__salary = salary # Now salary is a private vaeriable.
         # self.increment = increase
     def yearlyIncrease(self):
         self.salary = int(self.salary * self.increment)
@@ -82,6 +82,27 @@ print(Naruto.__dict__)
 
 # help(Naruto)
 print(str(Naruto))
+
+
+''' Lets check data classes'''
+
+from dataclasses import dataclass
+
+@dataclass # It creates 3 methods. You can use @dataclass(frozen = True) will prevent to update the variable in class.
+class Student:
+    # No need to create any __init__() method
+    # No need to create any __repr__() method
+    # No need to create any __eq__() method
+    name:str
+    subject:list
+    score:list
+    percentage:int
+
+Student1 = Student("Ratul",['DSA','OOP','Functions'],[12,33,45],43)
+
+
+
+
 
 
 
