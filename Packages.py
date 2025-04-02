@@ -28,6 +28,7 @@ def downloadFile(url,filename):
 
     # Get total file size
     totalExpectedBytes = int(download_file.headers.get("Content-Length", 0))
+    # totalExpectedBytes = int(download_file.headers[Content-Length"])
 
     # Initialize progress bar
     progressBar = tqdm(total=totalExpectedBytes,unit_scale=True)
@@ -87,5 +88,41 @@ listOfFileName = ["Pycherm","VSCode"]
 
 with ThreadPoolExecutor() as T:
     T.map(downloadFile,listOfURLs,listOfFileName)
+
+
+from pathlib import Path
+import os
+
+'''On this we will learn why we perffer to use pathlib over os module'''
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, 'subdir')
+BASE_DIR1 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                           
+# Build paths inside the project like this: BASE_DIR / 'subdir'
+
+BASE_DIR2 = Path(__file__).resolve().parent.parent
+
+# To check the current directory:
+print(Path.cwd())
+
+# To check all the files in current working directory:
+
+for p in Path().iterdir():
+    print(p)
+
+myFile = Path("DSA.py")
+
+print(myFile.suffix) # To check extention of the file.
+print(myFile.stem) # To check Name of the file.
+
+print(myFile.parent) # To check the parent directory of the file.
+print(myFile.parent.parent) # To check the parent directory of the parent directory of the file.
+print(myFile.absolute()) # To get the absolute path of the file.
+print(myFile.exists()) # To check if the file exsists.
+p = Path("..").resolve() # Parent location of the exsisting file.
+print(p)
+p = Path(__file__).resolve() # To get the absolute path of the current file.
+print(p)
+
 
 
