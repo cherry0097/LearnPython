@@ -1,0 +1,5 @@
+To create a virtual environment you need to run: python -m venv myenv
+This will create a myenv folder on the location where you are present at this moment.
+Now to access that virtual environment you need to run: source myenv/bin/activate --> On Bash
+To get out of the virtual environment you can run: deactivate.
+To check all the modules that you have installed on the virtual environment run: pip freeze
