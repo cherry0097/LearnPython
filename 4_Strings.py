@@ -55,9 +55,9 @@ print(e[:4])
 print(e[6:])
 
 '''
-If at the start the value is not mentioned then the default is 0 and if at the end the value is not present then the default is len(string) - 1
+If at the start the value is not mentioned then the default is 0 and if at the end the value is not present then the default is len(string)
 
-In our case: 0 and end is 8
+In our case: 0 and end is len(e) - 1 = 8
 
 The value can be negetive as well. Like -1 means len(string) - 1
 '''

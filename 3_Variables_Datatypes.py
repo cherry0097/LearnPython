@@ -11,6 +11,54 @@ x = 5
 y = 6
 print(x, y)
 
+# You can define variables like this as well: 
+# These are know as variable annotation with initialization.
+
+# Numeric Types
+a: int = 10             # Integer
+b: float = 3.14         # Floating-point number
+c: complex = 2 + 3j     # Complex number
+
+# Boolean Type
+d: bool = True          # Boolean (True or False)
+
+# Sequence Types
+e: str = "Hello"        # String
+f: list = [1, 2, 3]     # List
+g: tuple = (1, 2, 3)    # Tuple
+h: range = range(5)     # Range
+
+# Set Types
+i: set = {1, 2, 3}      # Set
+j: frozenset = frozenset({1, 2, 3})  # Immutable Set
+
+# Mapping Type
+k: dict = {"key": "value"}  # Dictionary
+
+# Binary Types
+l: bytes = b"hello"     # Bytes
+m: bytearray = bytearray(5)  # Mutable Bytes
+n: memoryview = memoryview(b"hello")  # Memory View
+
+# None Type
+o: None = None          # Represents the absence of a value
+
+# Special Type
+p: object = {"name": "Python"}  # Generic object
+
+# Callable & Iterator Types
+from typing import Callable, Iterator
+
+def func(x: int) -> str:
+    return str(x)
+
+q: Callable[[int], str] = func  # Function type hint
+r: Iterator[int] = iter([1, 2, 3])  # Iterator
+
+# Any Type (can be anything)
+from typing import Any
+s: Any = "Could be anything"
+
 # Also you can assign valus like this:
 
 d,e,f = "Hello",45,[12,35,5]

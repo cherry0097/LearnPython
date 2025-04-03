@@ -116,7 +116,7 @@ print(a)
 
 c = ~a
 
-print("Negetive 23 using ~------------")
+print("Negetive 23 using ~------------") # -24
 decmialtobinary(c)
 print(c)
 
