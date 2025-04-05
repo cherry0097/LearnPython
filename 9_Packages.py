@@ -28,7 +28,7 @@ def downloadFile(url,filename):
 
     # Get total file size
     totalExpectedBytes = int(download_file.headers.get("Content-Length", 0))
-    # totalExpectedBytes = int(download_file.headers[Content-Length"])
+    # totalExpectedBytes = int(download_file.headers["Content-Length"])
 
     # Initialize progress bar
     progressBar = tqdm(total=totalExpectedBytes,unit_scale=True)
