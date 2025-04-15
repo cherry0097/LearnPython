@@ -6,35 +6,48 @@ A = [1, 2] # It actually means A = [1, 2, _, _]
 
 '''Singly linked list'''
 
-class SinglyNode:
-    def __init__(self,val,next = None):
-        self.val = val
-        self.next = next
-    
-    def __str__(self):
-        return str(self.val)
+# Create a node structure:
 
-Head = SinglyNode(1)
-A = SinglyNode(3)
-B = SinglyNode(4)
-C = SinglyNode(7)
-D = SinglyNode(10)
+class Node:
+    def __init__(self,value = 0):
+        self.value = value
+        self.next_node = None
 
-Head.next = A
-A.next = B
-B.next = C
-C.next = D
-D.next = None
+# [Value,None]
 
-def display(head):
-    curr = head
-    elements = []
-    while curr:
-        elements.append(str(curr.val))
-        curr = curr.next
-    print(' -> '.join(elements))
+class LinkedList:
+    def __init__(self):
+        self.head = Node()
+    # This will create a empty head: [0,None]
 
-display(Head)
+    def addNode(self,value):
+        new_node = Node(value) # Will create a new node: [Value,None]
+        cur = self.head
+        # Now there could be 2 things: 
+        # 1. On the current node there are no address: [Value,None]
+        # 2. On the current node there are address: [Value,Address]
+        while cur.next_node:
+            cur = cur.next_node
+        # So, we will reach a situation where cur.next_node will be None.
+        # Once, it's reached:
+        cur.next_node = new_node
+        # So, the node will be added.
+    # By this step we have created a new node and added it at the end of the linked list.
+
+    def disPlay(self):
+        cur = self.head
+        res = []
+        while cur.next_node:
+            cur = cur.next_node
+            res.append(str(cur.value))
+        print(" -> ".join(res))
+    # This will show the linked list.
+
+my_list = LinkedList() # A linked list is created.
+my_list.addNode(34)
+my_list.addNode('Hello')
+my_list.addNode([23,45,66])
+my_list.disPlay()
 
 '''Doubly Linked list'''
 
