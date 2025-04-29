@@ -39,7 +39,7 @@ model_mapping = {
 async def home(): return {"Page": "Home Page"}
 
 # Creat
-
+@app.post("/{items}/")
 async def createProduct(items: str, data: Products):
     model = model_mapping.get(items.lower())
     product = model(**data.model_dump())
